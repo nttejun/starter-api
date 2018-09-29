@@ -3,6 +3,7 @@ package starter.api.controller;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,22 +16,21 @@ import starter.api.persistance.UserRepository;
 public class UserController {
 
     private static Logger logger = LoggerFactory.getLogger(UserController.class);
+
+    @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/join")
+    @GetMapping("/user")
     public String login(){
         return "join";
     }
 
-    @PostMapping("/join/chkUser")
-    public void chkId(@RequestBody UserRequestDto dto){
-        userRepository.findById("nttejun").ifPresent(user -> {
-            logger.info("USER IS NOT NULL");
-        });
-        logger.info("USER IS NULL");
+    @PostMapping("/user/chkUser")
+    public void chkId(){
+        userRepository.findByEmail("nttejun").ifPresent(user -> { });
     }
 
-    @PostMapping("/join/joinUser")
+    @PostMapping("/user/joinUser")
     public void joinUser(@RequestBody UserRequestDto dto){
         userRepository.save(dto.joinUser());
     }

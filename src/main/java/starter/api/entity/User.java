@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.math.BigInteger;
 import java.sql.Date;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -20,6 +21,9 @@ import java.sql.Date;
 public class User {
 
     @Id
+    @Column(name = "user_no")
+    private BigInteger idx;
+
     @Column(name = "user_email")
     private String email;
 
@@ -55,7 +59,6 @@ public class User {
     public static class Builder {
 
         // 선택적 인자 초기화
-
         private String email = "";
         private String nm = "";
         private String auth = "";
