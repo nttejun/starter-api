@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import starter.api.dto.UserRequestDto;
 import starter.api.persistance.UserRepository;
+import starter.api.service.UserService;
 
 @RestController
 @AllArgsConstructor
@@ -20,14 +21,12 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/user")
-    public String login(){
-        return "join";
-    }
+    @Autowired
+    private UserService userService;
 
     @PostMapping("/user/chkUser")
-    public void chkId(){
-        userRepository.findByEmail("nttejun").ifPresent(user -> { });
+    public void chkUser(@RequestBody UserRequestDto dto){
+        userService.chkDuplicateUser(dto.chkUser());
     }
 
     @PostMapping("/user/joinUser")

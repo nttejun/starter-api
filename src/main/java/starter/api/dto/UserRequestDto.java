@@ -10,20 +10,36 @@ import starter.api.entity.User;
 @NoArgsConstructor
 public class UserRequestDto {
 
+    private String email;
+    private String nm;
+    private String phone;
+    private String pw;
+    private String salt;
+    private String auth;
+    private String reg;
+
     public User joinUser(){
 
         User user = new User.Builder()
-                .email("이메일")
-                .nm("이름")
-                .phone("010")
-                .pw("비밀번호")
-                .salt("암호화비밀번호")
-                .auth("사용자권한")
-                .reg("등록자")
+                .email(email)
+                .nm(nm)
+                .phone(phone)
+                .pw(pw)
+                .salt(salt)
+                .auth(auth)
+                .reg(reg)
                 .build();
 
         return user;
 
+    }
+
+    public User chkUser(){
+        User user = new User.Builder()
+                .email(email)
+                .build();
+
+        return user;
     }
 
 }

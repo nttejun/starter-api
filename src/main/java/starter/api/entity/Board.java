@@ -3,12 +3,17 @@ package starter.api.entity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "board")
@@ -36,17 +41,43 @@ public class Board {
     @Column(name = "board_content")
     private String content;
 
+    @Column(name = "board_use_yn")
+    private String useyn;
+
     @Column(name = "board_reg")
     private String reg;
 
+    @Column(name = "board_regdttm")
+    @CreationTimestamp
+    private Timestamp regdttm;
+
+    @Column(name = "board_upt")
+    private String upt;
+
+    @Column(name = "board_uptdttm")
+    @UpdateTimestamp
+    private Timestamp uptdttm;
+
+
+
     public static class Builder {
 
+        private Long idx;
         private Long no;
         private String bcategory;
         private String mcategory;
         private String title;
         private String content;
+        private String useyn;
         private String reg;
+        private Timestamp regdttm;
+        private String upt;
+        private Timestamp uptdttm;
+
+        public Builder idx(Long val) {
+            idx = val;
+            return this;
+        }
 
         public Builder no(Long val) {
             no = val;
@@ -73,8 +104,28 @@ public class Board {
             return this;
         }
 
+        public Builder useyn(String val){
+            useyn = val;
+            return this;
+        }
+
         public Builder reg(String val) {
             reg = val;
+            return this;
+        }
+
+        public Builder regdttm(Timestamp val) {
+            regdttm = val;
+            return this;
+        }
+
+        public Builder upt(String val) {
+            upt = val;
+            return this;
+        }
+
+        public Builder uptdttm(Timestamp val) {
+            uptdttm = val;
             return this;
         }
 
@@ -86,12 +137,17 @@ public class Board {
 
     @lombok.Builder
     private Board(Builder builder) {
-        no = builder.no;
         bcategory = builder.bcategory;
-        mcategory = builder.mcategory;
-        title = builder.title;
         content = builder.content;
+        mcategory = builder.mcategory;
+        no = builder.no;
         reg = builder.reg;
+        regdttm = builder.regdttm;
+        title = builder.title;
+        upt = builder.upt;
+        uptdttm = builder.uptdttm;
+        useyn = builder.useyn;
+        idx = builder.idx;
     }
 
 }
