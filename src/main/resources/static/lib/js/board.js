@@ -1,6 +1,10 @@
-var main = {
+var board = {
     init: function () {
         var _this = this;
+
+        // 기본 값 입력
+        load();
+
         $("#btn-save").on('click', function () {
             _this.createBoard();
         })
@@ -26,12 +30,12 @@ var main = {
                 alert('게시글이 등록되었습니다.');
             },
             error: function (xhr, status, error) {
-                alert(error);
+                alert("xhr = " + xhr + " / status = " + status + " / error = " + error);
                 alert("게시물 등록을 잠시 후 이용해주세요.");
             }
         });
-    }
-
+    },
 };
 
-main.init();
+board.init();
+

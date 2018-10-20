@@ -4,10 +4,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import starter.api.entity.Board;
 
-import java.util.Collection;
-import java.util.List;
-
 public interface BoardRepository extends CrudRepository<Board, Long> {
-
-
+    @Query("SELECT b.no FROM Board b ORDER BY b.no DESC")
+    long getBoardNo();
 }
