@@ -11,6 +11,8 @@ import starter.api.persistance.BoardRepository;
 
 import javax.transaction.Transactional;
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 @AllArgsConstructor
 @Service
@@ -25,7 +27,11 @@ public class BoardService {
     public void createBoard(BoardRequestDto dto){
 
         logger.info(">>> START BoardService createBoard()");
-        logger.info("=== DTO DATA = " + dto.toString());
+
+        // 등록할 게시물번호
+        dto.setNo(getBoardNo()+1);
+
+        logger.info("=== ENROLL BOARD DATA = " + dto.toString());
 
         // 중복 데이터가 존재하지 않으면 등록하고 등록된 회원번호를 반환한다
         boardRepository.save(dto.createBoard());
@@ -33,17 +39,14 @@ public class BoardService {
         logger.info(">>> END BoardService createBoard()");
     }
 
+
     @Transactional
     public long getBoardNo() {
 
         logger.info(">>> START getBoardNo Method");
 
-        long boardNo = boardRepository.getBoardNo();
-
-        logger.info(">>>> RESULT DATA : " + String.valueOf(boardNo));
-        logger.info(">>> END getBoardNo Method");
-
-        return boardNo;
+        return boardRepository.getBoardNo();
 
     }
+
 }

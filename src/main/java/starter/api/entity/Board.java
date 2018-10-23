@@ -1,6 +1,7 @@
 package starter.api.entity;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -55,95 +56,22 @@ public class Board {
     @Column(name = "board_uptdttm")
     @UpdateTimestamp
     private Timestamp uptdttm;
-    
-    public static class Builder {
-
-        private Long idx;
-        private Long no;
-        private String bcategory;
-        private String mcategory;
-        private String title;
-        private String content;
-        private String useyn;
-        private String reg;
-        private Timestamp regdttm;
-        private String upt;
-        private Timestamp uptdttm;
-
-        public Builder idx(Long val) {
-            idx = val;
-            return this;
-        }
-
-        public Builder no(Long val) {
-            no = val;
-            return this;
-        }
-
-        public Builder bcategory(String val) {
-            bcategory = val;
-            return this;
-        }
-
-        public Builder mcategory(String val) {
-            mcategory = val;
-            return this;
-        }
-
-        public Builder title(String val) {
-            title = val;
-            return this;
-        }
-
-        public Builder content(String val) {
-            content = val;
-            return this;
-        }
-
-        public Builder useyn(String val){
-            useyn = val;
-            return this;
-        }
-
-        public Builder reg(String val) {
-            reg = val;
-            return this;
-        }
-
-        public Builder regdttm(Timestamp val) {
-            regdttm = val;
-            return this;
-        }
-
-        public Builder upt(String val) {
-            upt = val;
-            return this;
-        }
-
-        public Builder uptdttm(Timestamp val) {
-            uptdttm = val;
-            return this;
-        }
-
-        public Board build() {
-            return new Board(this);
-        }
-
-    }
 
     @lombok.Builder
-    private Board(Builder builder) {
-        bcategory = builder.bcategory;
-        content = builder.content;
-        mcategory = builder.mcategory;
-        no = builder.no;
-        reg = builder.reg;
-        regdttm = builder.regdttm;
-        title = builder.title;
-        upt = builder.upt;
-        uptdttm = builder.uptdttm;
-        useyn = builder.useyn;
-        idx = builder.idx;
+    public Board(Long idx, Long no, String bcategory, String mcategory, String title, String content, String useyn, String reg, Timestamp regdttm, String upt, Timestamp uptdttm) {
+        this.idx = idx;
+        this.no = no;
+        this.bcategory = bcategory;
+        this.mcategory = mcategory;
+        this.title = title;
+        this.content = content;
+        this.useyn = useyn;
+        this.reg = reg;
+        this.regdttm = regdttm;
+        this.upt = upt;
+        this.uptdttm = uptdttm;
     }
-
 }
+
+
+

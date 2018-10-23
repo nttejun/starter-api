@@ -31,8 +31,7 @@ public class BoardRequestDto {
 
     // 빌드 데이터가 알파벳 순서로 자동으로 정렬된다.
     public Board createBoard(){
-
-        Board board = new Board.Builder()
+        return Board.builder()
                 .bcategory(bcategory)
                 .content(content)
                 .mcategory(mcategory)
@@ -45,8 +44,13 @@ public class BoardRequestDto {
                 .useyn(useyn)
                 .idx(idx)
                 .build();
-
-        return board;
     }
 
+    public Board getBoardList() {
+        return Board.builder()
+                .content(content)
+                .no(no)
+                .title(title)
+                .build();
+    }
 }

@@ -20,7 +20,6 @@ public class ApiApplication extends SpringBootServletInitializer {
 	}
 
 	public static void main(String[] args) {
-		logger.info(">>> START ApiApplication.class ");
 		SpringApplication.run(ApiApplication.class, args);
 	}
 

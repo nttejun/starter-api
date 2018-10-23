@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import starter.api.entity.Board;
 
 public interface BoardRepository extends CrudRepository<Board, Long> {
-    @Query("SELECT b.no FROM Board b ORDER BY b.no DESC")
+    @Query("SELECT max(b.no) FROM Board b ORDER BY b.no DESC")
     long getBoardNo();
 }

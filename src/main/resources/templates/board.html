@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <title>스프링부트 웹서비스</title>
@@ -12,24 +12,21 @@
 <h1>게시판 페이지</h1>
 
 <div class="col-md-12">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#savePostsModal">글 등록</button>
+    <button type="button" class="btn btn-primary" id="board" data-toggle="modal" data-target="#savePostsModal">글 등록</button>
+<div th:text="${boardNo}"></div>
 </div>
 
 <div class="modal fade" id="savePostsModal" tabindex="-1" role="dialog" aria-labelledby="savePostsLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="savePostsLabel">게시글 등록</h5>
+                <h5 class="modal-title" id="showBoard">게시글 등록</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="form-group">
-                        <label for="no">글 번호</label>
-                        <textarea class="form-control" id="no" placeholder="글번호를 입력하세요"></textarea>
-                    </div>
                     <div class="form-group">
                         <label for="title">제목</label>
                         <textarea class="form-control" id="title" placeholder="제목을 입력하세요"></textarea>
@@ -55,10 +52,11 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
                 <button type="button" class="btn btn-primary" id="btn-save">등록</button>
-            </div>btn-save
+            </div>
         </div>
     </div>
 </div>
+
 
 <script src="/lib/js/jquery.min.js"></script>
 <script src="/lib/js/bootstrap.min.js"></script>
