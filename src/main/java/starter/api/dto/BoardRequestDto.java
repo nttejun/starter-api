@@ -29,6 +29,20 @@ public class BoardRequestDto {
     private String upt;
     private Timestamp uptdttm;
 
+    public BoardRequestDto(Board board){
+        idx = board.getIdx();
+        no = board.getNo();
+        bcategory = board.getBcategory();
+        mcategory = board.getMcategory();
+        title = board.getTitle();
+        content = board.getContent();
+        useyn = board.getUseyn();
+        reg = board.getReg();
+        regdttm = board.getRegdttm();
+        upt = board.getUpt();
+        uptdttm = board.getUptdttm();
+    }
+
     // 빌드 데이터가 알파벳 순서로 자동으로 정렬된다.
     public Board createBoard(){
         return Board.builder()
@@ -51,6 +65,20 @@ public class BoardRequestDto {
                 .content(content)
                 .no(no)
                 .title(title)
+                .build();
+    }
+
+    public Board findAllDesc() {
+        return Board.builder()
+                .bcategory(bcategory)
+                .content(content)
+                .mcategory(mcategory)
+                .no(no)
+                .reg(reg)
+                .regdttm(regdttm)
+                .title(title)
+                .upt(upt)
+                .uptdttm(uptdttm)
                 .build();
     }
 }

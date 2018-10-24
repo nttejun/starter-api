@@ -1,10 +1,11 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <title>스프링부트 웹서비스</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="/lib/css/bootstrap.css">
     <link rel="stylesheet" href="/lib/css/bootstrap-theme.min.css">
 </head>
@@ -12,11 +13,28 @@
 <h1>게시판 페이지</h1>
 
 <div class="col-md-12">
-    <button type="button" class="btn btn-primary" id="board" data-toggle="modal" data-target="#savePostsModal">글 등록</button>
-<div th:text="${boardNo}"></div>
+    <button type="button" class="btn btn-primary" id="board" data-toggle="modal" data-target="#savePostsModal">글 등록
+    </button>
+    <div th:text="${boardNo}"></div>
 </div>
 
-<div class="modal fade" id="savePostsModal" tabindex="-1" role="dialog" aria-labelledby="savePostsLabel" aria-hidden="true">
+<table class="table table-horizontal table-bordered">
+    <thead class="thead-strong">
+    <tr>
+        <th>no</th>
+        <th>title</th>
+    </tr>
+    </thead>
+    <tbody id="tbody" th:each="board : ${boardList}">
+        <tr>
+            <td th:text="${board.no}">no</td>
+            <td th:text="${board.title}">title</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="modal fade" id="savePostsModal" tabindex="-1" role="dialog" aria-labelledby="savePostsLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

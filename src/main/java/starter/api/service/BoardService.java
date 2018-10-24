@@ -13,6 +13,7 @@ import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
@@ -47,6 +48,13 @@ public class BoardService {
 
         return boardRepository.getBoardNo();
 
+    }
+
+    @Transactional
+    public List<BoardRequestDto> getBoardList(){
+        return boardRepository.findAllDesc()
+                .map(BoardRequestDto::new)
+                .collect(Collectors.toList());
     }
 
 }

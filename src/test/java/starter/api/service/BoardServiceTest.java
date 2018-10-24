@@ -18,7 +18,6 @@ public class BoardServiceTest {
 
     @Test
     public void 게시물목록조회(){
-        Board board = (Board) boardRepository.findAll();
 
     }
 
