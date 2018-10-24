@@ -21,14 +21,18 @@
 <table class="table table-horizontal table-bordered">
     <thead class="thead-strong">
     <tr>
-        <th>no</th>
-        <th>title</th>
+        <th>글번호</th>
+        <th>제목</th>
+        <th>등록자</th>
+        <th>등록일시</th>
     </tr>
     </thead>
     <tbody id="tbody" th:each="board : ${boardList}">
         <tr>
-            <td th:text="${board.no}">no</td>
-            <td th:text="${board.title}">title</td>
+            <td th:text="${board.no}">글번호</td>
+            <td th:text="${board.title}">제목</td>
+            <td th:text="${board.reg}">등록자</td>
+            <td th:text="${board.regdttm}">등록일시</td>
         </tr>
     </tbody>
 </table>
