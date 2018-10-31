@@ -6,13 +6,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import starter.api.dto.BoardRequestDto;
-import starter.api.entity.Board;
 import starter.api.persistance.BoardRepository;
 
 import javax.transaction.Transactional;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -56,5 +53,4 @@ public class BoardService {
                 .map(BoardRequestDto::new)
                 .collect(Collectors.toList());
     }
-
 }

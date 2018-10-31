@@ -12,4 +12,5 @@ public interface BoardRepository extends CrudRepository<Board, Long> {
 
     @Query("SELECT b FROM Board b ORDER BY b.no DESC")
     Stream<Board> findAllDesc();
+
 }

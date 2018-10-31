@@ -1,6 +1,8 @@
+/*
 package starter.api;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.config.EnableWebFlux;
 import org.springframework.web.reactive.config.WebFluxConfigurer;
@@ -14,7 +16,6 @@ import org.thymeleaf.templatemode.TemplateMode;
 @Configuration
 @EnableWebFlux
 public class WebFluxConfiguration implements WebFluxConfigurer {
-
 
     @Bean
     public SpringResourceTemplateResolver thymeleafTemplateResolver() {
@@ -58,3 +59,4 @@ public class WebFluxConfiguration implements WebFluxConfigurer {
     }
 
 }
+*/
